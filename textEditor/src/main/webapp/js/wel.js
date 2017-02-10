@@ -8,5 +8,4 @@ $(document).ready(function(){
 	    $('.changeMe').css("font-size", $(this).val() + "px");
 	});
 	
-	
 });

@@ -8,27 +8,30 @@
       }
     #editor1 {
       border: 3px inset grey;
-      height: 100px;
-      width: 381px;
+      height: 500px;
+      width: 681px;
       margin: 10px auto 0;
      }
     fieldset {
       margin: 2px auto 15px;
-      width: 358px;
+      width: 658px;
     }
     button {
       width: 5ex;
       text-align: center;
       padding: 1px 3px;
     }
+    .sent{
+    background-color:#e0e0e0;
+    }
   </style>
  <script src="../js/external/jquery.js"></script>
 <script src="../js/wel.js"></script>
+<script src="../js/wel1.js"></script>
 </head>
-
 <body>
-
   <fieldset>
+  <div class="sent">
     <button class="fontStyle" onclick="document.execCommand('italic',false,null);" title="Italicize Highlighted Text"><i>I</i>
     </button>
     <button class="fontStyle" onclick="document.execCommand( 'bold',false,null);" title="Bold Highlighted Text"><b>B</b>
@@ -44,9 +47,18 @@
         <option value="7">7</option><option value="10">10</option><option value="20">20</option> <option value="30">30</option>
          <option value="40">40</option> 
     </select>
-
+    <select  onchange="ChangeFont (this);" id="doing">
+        <option selected="selected" >none</option>
+        <option >capitalize</option>
+        <option >uppercase</option>
+        <option >lowercase</option>
+    </select>
+    <input type='file' id="imgInp" onchange="readURL(this);" />
+       
+</div>
+<hr>
 <div id="editor1"  class="changeMe" contenteditable="true">
-   
+  <img id="blah" src="#" alt="your image" />
   </div>
 
 
