@@ -1,6 +1,5 @@
 $(document).ready(function(){
-	$("#fs").change(function() {
-	    //alert($(this).val());
+	$("#fs").change(function() { 
 	    $('.changeMe').css("font-family", $(this).val());
 
 	});
