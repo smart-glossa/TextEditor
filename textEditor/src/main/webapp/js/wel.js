@@ -8,15 +8,15 @@ $(document).ready(function(){
 	    $('.changeMe').css("font-size", $(this).val() + "px");
 	});
 	
-	$("#sole").change(function() {
+	$("#sole").click(function() {
 	    $('.changeMe').css("textalign", $(this).val());
 	});
 	
-	$("#shall").change(function() {
+	$("#shall").click(function() {
 	    $('.changeMe').css("text-align", $(this).val());
 	});
 	
-	$("#show").change(function() {
+	$("#show").click(function() {
 	    $('.changeMe').css("text-align", $(this).val());
 	});
 	

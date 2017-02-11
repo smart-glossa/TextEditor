@@ -45,6 +45,14 @@
 .you{
 margin-left:760px;
 margin-top:-30px;} 
+#sole{
+text-align:left;
+}
+#show{
+text-align:center;}
+   
+   #shall{
+text-align:right;}
    
   </style>
  <script src="../js/external/jquery.js"></script>
@@ -79,8 +87,14 @@ margin-top:-30px;}
   <img class="ig" id="sole"  src="../images/1.png">
    <img class="ig"  id="shall"  src="../images/2.png">
    <img class="ig"    id="show" src="../images/3.png">
-    <img  class="you" src="../images/format-block.png">
-      
+   <input type="color" id="read">color</input>
+  
+    <select onchange="ChangeTextAlign (this);">
+        <option />left
+        <option />right
+        <option selected="selected" />center
+        <option />justify
+    </select>
 </div>
 <div id="editor1"  class="changeMe" contenteditable="true">
   <img id="blah" src="#" alt="your image" />

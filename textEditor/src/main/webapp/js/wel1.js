@@ -18,3 +18,14 @@ function readURL(input) {
     }
 }
 
+
+function ChangeTextAlign (selectTag) {
+    // Returns the index of the selected option
+    var whichSelected = selectTag.selectedIndex;
+
+    // Returns the text of the selected option
+    var alignValue = selectTag.options[whichSelected].text;
+
+    var div = document.getElementById ("editor1");
+    div.style.textAlign = alignValue;
+}
