@@ -8,10 +8,17 @@ $(document).ready(function(){
 	    $('.changeMe').css("font-size", $(this).val() + "px");
 	});
 	
-	$('.p').each(function() {
-	      var width = $(this).width();   
-	       alert(width);
-	       $(this).css({'margin-left': -width / 2, 'text-align': 'center'}).after('<br /><br />');    
-	   });
+	$("#sole").change(function() {
+	    $('.changeMe').css("textalign", $(this).val());
+	});
+	
+	$("#shall").change(function() {
+	    $('.changeMe').css("text-align", $(this).val());
+	});
+	
+	$("#show").change(function() {
+	    $('.changeMe').css("text-align", $(this).val());
+	});
+	
 	
 });

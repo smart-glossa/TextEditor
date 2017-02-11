@@ -24,13 +24,35 @@
     .sent{
     background-color:#e0e0e0;
     }
+    .ig{
+    width:19px;
+    margin-left:20px;
+    bottom:90px
+    }
+   #editor1 {
+    width: 97%;
+    height: 500px;
+    border-radius: 3px;
+    border: 1px solid #CCC;
+    padding: 8px;
+    font-weight: 200;
+    font-size: 15px;
+    font-family: Verdana;
+    box-shadow: 1px 1px 5px #CCC;
+    resize: none;
+    position: static;
+}
+.you{
+margin-left:760px;
+margin-top:-30px;} 
+   
   </style>
  <script src="../js/external/jquery.js"></script>
 <script src="../js/wel.js"></script>
 <script src="../js/wel1.js"></script>
 </head>
 <body>
-  <fieldset>
+
   <div class="sent">
     <button class="fontStyle" onclick="document.execCommand('italic',false,null);" title="Italicize Highlighted Text"><i>I</i>
     </button>
@@ -54,13 +76,15 @@
         <option >lowercase</option>
     </select>
     <input type='file' id="imgInp" onchange="readURL(this);" />
-       <button class="p">next</button>
+  <img class="ig" id="sole"  src="../images/1.png">
+   <img class="ig"  id="shall"  src="../images/2.png">
+   <img class="ig"    id="show" src="../images/3.png">
+    <img  class="you" src="../images/format-block.png">
+      
 </div>
-<hr>
 <div id="editor1"  class="changeMe" contenteditable="true">
   <img id="blah" src="#" alt="your image" />
+
   </div>
-
-
-
-  </fieldset>
+</body>
+</html>
