@@ -1280,125 +1280,6 @@ function widgToolbarMouseover()
 }
 
 
-
-
-function acceptableChildren(theNode)
-{
-	var theChildren = theNode.childNodes;
-	
-	for (var i = 0; i < theChildren.length; i++)
-	{
-		if (!theChildren[i].nodeName.isAcceptedElementName())
-		{
-			if (!theChildren[i].nodeName.isInlineName())
-			{
-				if (theNode.nodeName.toLowerCase() == "p")
-				{
-					acceptableChildren(replaceNodeWithChildren(theNode));
-					
-					return true;
-				}
-				
-				changeNodeType(theChildren[i], "p");
-			}
-			else
-			{
-				replaceNodeWithChildren(theChildren[i]);
-			}
-				
-			i = -1;
-		}
-	}
-	
-	for (var i = 0; i < theChildren.length; i++)
-	{
-		acceptableChildren(theChildren[i]);
-	}
-	
-	return true;
-}
-
-
-
-
-/* Change the type of a node, e.g. h3 to p */
-function changeNodeType(theNode, nodeType)
-{
-	var theChildren = new Array();
-	var theNewNode = document.createElement(nodeType);
-	var theParent = theNode.parentNode;
-	
-	if (theParent != null)
-	{
-		for (var i = 0; i < theNode.childNodes.length; i++)
-		{
-			theChildren.push(theNode.childNodes[i].cloneNode(true));
-		}
-		
-		for (var i = 0; i < theChildren.length; i++)
-		{
-			theNewNode.appendChild(theChildren[i]);
-		}
-		
-		theParent.replaceChild(theNewNode, theNode);
-	}
-	
-	return true;
-}
-
-
-
-
-/* Replace a node with its children -- delete the item and move its children up one level in the hierarchy */
-function replaceNodeWithChildren(theNode)
-{
-	var theChildren = new Array();
-	var theParent = theNode.parentNode;
-	
-	if (theParent != null)
-	{
-		for (var i = 0; i < theNode.childNodes.length; i++)
-		{
-			theChildren.push(theNode.childNodes[i].cloneNode(true));
-		}
-		
-		for (var i = 0; i < theChildren.length; i++)
-		{
-			theParent.insertBefore(theChildren[i], theNode);
-		}
-		
-		theParent.removeChild(theNode);
-		
-		return theParent;
-	}
-	
-	return true;
-}
-
-
-
-
-/* Add a class to a string */
-String.prototype.addClass = function(theClass)
-{
-	if (this != "")
-	{
-		if (!this.classExists(theClass))
-		{
-			return this + " " + theClass;
-		}
-	}
-	else
-	{
-		return theClass;
-	}
-	
-	return this;
-}
-
-
-
-
 /* Check if a class exists in a string */
 String.prototype.classExists = function(theClass)
 {
@@ -1416,7 +1297,6 @@ String.prototype.classExists = function(theClass)
 
 
 
-/* Check if a string is the nodeName of an accepted element */
 String.prototype.isAcceptedElementName = function()
 {
 	var elementList = new Array("#text", "a", "em", "h1", "h2", "h3", "h4", "h5", "h6", "img", "li", "ol", "p", "strong", "ul");
@@ -1433,10 +1313,6 @@ String.prototype.isAcceptedElementName = function()
 	return false;
 }
 
-
-
-
-/* Check if a string is the nodeName of an inline element */
 String.prototype.isInlineName = function()
 {
 	var inlineList = new Array("#text", "a", "em", "font", "span", "strong", "u");
@@ -1468,45 +1344,3 @@ String.prototype.removeClass = function(theClass)
 
 
 
-/* Reverse a string */
-String.prototype.reverse = function()
-{
-	var theString = "";
-	
-	for (var i = this.length - 1; i >= 0; i--)
-	{
-		theString += this.charAt(i);
-	}
-	
-	return theString;
-}
-
-
-
-
-/* Make tags valid by converting uppercase element and attribute names to lowercase and quoting attributes */
-String.prototype.validTags = function()
-{
-	var theString = this;
-	
-	/* Replace uppercase element names with lowercase */
-	theString = theString.replace(/<[^> ]*/g, function(match){return match.toLowerCase();});
-	
-	/* Replace uppercase attribute names with lowercase */
-	theString = theString.replace(/<[^>]*>/g, function(match)
-		{
-			match = match.replace(/ [^=]+=/g, function(match2){return match2.toLowerCase();});
-
-			return match;
-		});
-			
-	/* Put quotes around unquoted attributes */
-	theString = theString.replace(/<[^>]*>/g, function(match)
-		{
-			match = match.replace(/( [^=]+=)([^"][^ >]*)/g, "$1\"$2\"");
-			
-			return match;
-		});
-		
-	return theString;
-}
