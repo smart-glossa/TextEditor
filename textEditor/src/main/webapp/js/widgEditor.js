@@ -1,9 +1,6 @@
-
 var widgStylesheet = "css/widgContent.css";
-
 /* Items to appear in toolbar. */
 var widgToolbarItems = new Array();
-
 widgToolbarItems.push("bold");
 widgToolbarItems.push("italic");
 widgToolbarItems.push("hyperlink");
@@ -12,7 +9,6 @@ widgToolbarItems.push("orderedlist");
 widgToolbarItems.push("image");
 widgToolbarItems.push("htmlsource");
 widgToolbarItems.push("blockformat");
-
 /* Options on block format select element. Consists of string pairs (option value, option label) */
 var widgSelectBlockOptions = new Array();
 
@@ -24,19 +20,9 @@ widgSelectBlockOptions.push("<h4>", "Heading 4");
 widgSelectBlockOptions.push("<h5>", "Heading 5");
 widgSelectBlockOptions.push("<h6>", "Heading 6");
 widgSelectBlockOptions.push("<p>", "Paragraph");
-
 var widgInsertParagraphs = true;
-
 var widgAutoClean = false;
-
-
-
-
 run();
-
-
-
-
 function run()
 {
 	var oldOnload = window.onload;
@@ -55,9 +41,6 @@ function run()
 	}
 }
 
-
-
-
 function widgInit()
 {
 	if (typeof(document.designMode) == "string" && (document.all || document.designMode == "off"))
@@ -74,8 +57,6 @@ function widgInit()
 				{
 					theTextarea.id = theTextarea.name;
 				}
-				
-				
 				setTimeout("new widgEditor('" + theTextarea.id + "')", 500 * (i));
 			}
 		}
@@ -87,10 +68,6 @@ function widgInit()
 	
 	return true;
 }
-
-
-
-
 function widgEditor(replacedTextareaID)
 {
 	var self = this;
@@ -128,10 +105,7 @@ function widgEditor(replacedTextareaID)
 	this.theInput.id = this.theTextarea.id;
 	this.theInput.name = this.theTextarea.name;
 	this.theInput.value = this.theTextarea.value;
-
 	this.theToolbar = new widgToolbar(this);
-	
-	
 	this.theExtraInput.type = "hidden";	
 	this.theExtraInput.id = this.theTextarea.id + "WidgEditor";
 	this.theExtraInput.name = this.theTextarea.name + "WidgEditor";
@@ -260,9 +234,7 @@ widgEditor.prototype.cleanPaste = function()
 		this.theInput.value = this.theInput.value.replace(/<\?xml[^>]*>/g, "");
 		this.theInput.value = this.theInput.value.replace(/<[^ >]+:[^>]*>/g, "");
 		this.theInput.value = this.theInput.value.replace(/<\/[^ >]+:[^>]*>/g, "");
-
 		this.refreshDisplay();
-		
 		/* Convert semantics to spans in Mozilla */
 		if (!this.IE)
 		{
@@ -272,13 +244,6 @@ widgEditor.prototype.cleanPaste = function()
 	
 	return true;
 }
-
-
-
-
-
-
-
 widgEditor.prototype.convertSPANs = function(theSwitch)
 {
 	if (theSwitch)
@@ -688,10 +653,6 @@ widgEditor.prototype.switchMode = function()
 			
 	return true;
 }
-
-
-
-
 /* Update hidden input to reflect editor contents, for submission */
 widgEditor.prototype.updateWidgInput = function()
 {
@@ -710,13 +671,8 @@ widgEditor.prototype.updateWidgInput = function()
 	{
 		this.theInput.value = this.theTextarea.value;
 	}
-
 	return true;
 }
-
-
-
-
 /* Write initial content to editor */
 widgEditor.prototype.writeDocument = function(documentContent)
 {
@@ -776,12 +732,9 @@ function widgToolbar(theEditor)
 				
 			case "hyperlink":
 				this.addButton(this.theList.id + "ButtonLink", "widgButtonLink", "Hyperlink", "link");
-				
 				break;
-				
 			case "unorderedlist":
 				this.addButton(this.theList.id + "ButtonUnordered", "widgButtonUnordered", "Unordered List", "insertunorderedlist");
-				
 				break;
 				
 			case "orderedlist":
@@ -870,10 +823,6 @@ widgToolbar.prototype.addSelect = function(theID, theClass, theContentArray, the
 
 	return true;
 }
-
-
-
-
 /* Turn off toolbar items */
 widgToolbar.prototype.disable = function()
 {
@@ -902,10 +851,6 @@ widgToolbar.prototype.disable = function()
 	
 	return true;
 }
-
-
-
-
 /* Turn on toolbar items */
 widgToolbar.prototype.enable = function()
 {
@@ -934,10 +879,6 @@ widgToolbar.prototype.enable = function()
 	
 	return true;
 }
-
-
-
-
 /* Change the status of the selected toolbar item */
 widgToolbar.prototype.setState = function(theState, theStatus)
 {
@@ -970,11 +911,6 @@ widgToolbar.prototype.setState = function(theState, theStatus)
 			
 	return true;	
 }
-
-
-
-
-
 /* Action taken when toolbar item activated */
 function widgToolbarAction()
 {
@@ -988,7 +924,6 @@ function widgToolbarAction()
 	{
 		return false;
 	}
-	
 	switch (this.action)
 	{
 		case "formatblock":
@@ -1138,10 +1073,6 @@ function widgToolbarAction()
 	
 	return false;	
 }
-
-
-
-
 /* Check the nesting of the current cursor position/selection */
 function widgToolbarCheckState(theWidgEditor, resubmit)
 {
@@ -1312,7 +1243,6 @@ String.prototype.isAcceptedElementName = function()
 	
 	return false;
 }
-
 String.prototype.isInlineName = function()
 {
 	var inlineList = new Array("#text", "a", "em", "font", "span", "strong", "u");
@@ -1328,10 +1258,6 @@ String.prototype.isInlineName = function()
 	
 	return false;
 }
-
-
-
-
 /* Remove a class from a string */
 String.prototype.removeClass = function(theClass)
 {
@@ -1340,7 +1266,3 @@ String.prototype.removeClass = function(theClass)
 	
 	return this.replace(regExpression, "");
 }
-
-
-
-

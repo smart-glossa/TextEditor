@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-<meta name="author" content="The Man in Blue" />
-<meta name="robots" content="all" />
-<meta name="MSSmartTagsPreventParsing" content="true" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-
 <style type="text/css" media="all">
 	@import "css/info.css";
 	@import "css/main.css";
@@ -14,35 +7,25 @@
 </style>
 
 <script type="text/javascript" src="js/widgEditor.js"></script>
-
+<script type="text/javascript" src="js/wedg.js"></script>
 </head>
-
-
-
 <body>
+
 	
 	<div id="content">
 		<h2>
 			TextEditor
-		</h2>
-		
-			
+		</h2>	
 		<form action="" onsubmit="alert('Your submitted HTML was:\n\n' + document.getElementById('noise').value); return false;">
 			<fieldset>
 				<label for="noise">
-					Make some noise:
+				write some text use
 				</label>
+				
 				<textarea id="noise" name="noise" class="widgEditor nothing"></textarea>
+				
 			</fieldset>
-			<fieldset class="submit">
-				<input type="submit" value="Check the submitted code" />
-			</fieldset>
-		</form>
+			</form>
 	</div>
-<!-- END content -->
 </body>
-
-
-
-
 </html>
